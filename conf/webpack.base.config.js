@@ -1,6 +1,7 @@
 import Config from 'webpack-config';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import autoprefixer from 'autoprefixer';
 
 export default new Config().merge({
   entry: {
@@ -19,18 +20,23 @@ export default new Config().merge({
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        }),
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        }),
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [autoprefixer]
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ],
         exclude: /node_modules/
       }
     ]
