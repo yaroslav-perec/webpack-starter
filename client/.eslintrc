@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "react",
+    "jsx-a11y"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "args": "none" }],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
+  },
+  "extends": ["airbnb-base"]
+}
