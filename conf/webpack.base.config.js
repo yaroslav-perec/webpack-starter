@@ -5,7 +5,6 @@ import autoprefixer from 'autoprefixer';
 
 export default new Config().merge({
   entry: {
-    bundle: './client/index.js',
     styles: './client/styles/main.scss'
   },
   output: {
